@@ -1,0 +1,72 @@
+<project xmlns:ivy="antlib:fr.jayasoft.ivy.ant"
+    name="Catalyst Test"
+    default="jar" >
+
+	<property
+        name="build.dir"
+        value="dist" />
+
+	<property
+        name="src.dir"
+        value="src" />
+
+	<property
+        name="lib.dir"
+        value="lib" />
+
+	<property
+        name="jar.name"
+        value="catalystTest.jar" />
+
+	<path id="compile.classpath" >
+
+		<fileset dir="${lib.dir}" >
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<target name="clean">
+		<delete dir="${build.dir}" failonerror="false" verbose="true"/>
+		<mkdir dir="${build.dir}" />
+		
+		<copy file="${src.dir}/inbound.xml" todir="${build.dir}"></copy>
+	</target>
+
+	<target
+        name="build"
+        depends="clean" >
+
+		<javac
+            debug="true"
+            destdir="${build.dir}"
+            srcdir="${src.dir}" >
+			<include name="**/*.java" />
+			<classpath refid="compile.classpath" />
+		</javac>
+	</target>
+
+	<target
+        name="jar"
+        depends="build" >
+		<jar
+            compress="false"
+            file="${build.dir}/${jar.name}" >
+			<fileset dir="${build.dir}" >
+				<include name="**/*" />
+			</fileset>
+
+			<manifest>
+				<attribute
+                    name="Main-Class"
+                    value="catalyst.test.action.CatalystTest" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="run">
+		<java dir="${build.dir}" classpath="${build.dir}" jar="${build.dir}/${jar.name}" fork="true">
+		</java>
+
+	</target>
+
+</project>

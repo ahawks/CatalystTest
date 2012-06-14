@@ -1,0 +1,28 @@
+C:\CatalystTest>ant run
+Buildfile: C:\CatalystTest\build.xml
+
+run:
+     [java] 5 records found.
+     [java] Record #3 from unsorted list:
+     [java] Name: Jack
+     [java] Department: Development
+     [java] Joindate: 03/01/2005
+     [java] Salary: 15,000
+     [java]
+     [java] Highest salary employee:
+     [java] Name: John
+     [java] Department: Development
+     [java] Joindate: 02/11/2003
+     [java] Salary: 30,000
+     [java]
+     [java] Lowest salary employee:
+     [java] Name: Jane
+     [java] Department: Development
+     [java] Joindate: 02/21/2004
+     [java] Salary: 11,000
+     [java]
+     [java] Earliest Join Date:
+     [java] Name: Jill
+     [java] Department: Development
+     [java] Joindate: 05/01/2001
+     [java] Salary: 13,000
